@@ -7,10 +7,11 @@
     <title>Me livrando da maldição</title>
 </head>
 <body>
-    <h1>
+    <h1>PHP🐘</h1>
+    <h2>
         <?php 
             echo "Olá mundo! \u{1F30E}" 
         ?>
-    </h1>
+    </h2>
 </body>
 </html>

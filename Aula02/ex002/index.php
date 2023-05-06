@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Tipos primitivos de PHP</h1>
+    <h1>PHP 🐘</h1>
     <h2>Testes de tipos primitivos</h2>
     <?php 
         $numFloat = 453.5;

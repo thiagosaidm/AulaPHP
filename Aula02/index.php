@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>
-        Variáveis
+    PHP🐘
     </h1>
-
+        <H2>Variáveis</H2>
     <?php 
         $nome = "Thiago";
         $sobrenome = "Soares";
