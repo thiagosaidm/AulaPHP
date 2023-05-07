@@ -9,17 +9,15 @@
 </head>
 <body>
 <header>
-    <h1>Conversor de Moedas</h1>
+    <h1>Resultado</h1>
     </header>
     <main>
         <?php 
-            
-        
             $numero = $_GET["numero"];
-            $sorteio = rand($numero, 100);
+            $emDolar = round($numero/4.95,2);
             
 
-            echo "<p>O número sorteado foi $sorteio
+            echo "<p>$numero reais equivale a $emDolar doláres
             </p>";
       
         ?>
