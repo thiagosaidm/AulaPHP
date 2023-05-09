@@ -27,14 +27,14 @@
     </main>
 
     <section id="res"> 
-        <h2>Resultado da Soma</h2>
+        <h2>Resultado</h2>
         <?php 
           $soma = $valor1 + $valor2;
           echo "<h3> A soma entre $valor1 e valor $valor2 é:<br>
           
           <strong>$soma</strong>
           </h3>"
-        ?>
+        ?> 
     </section>
 
 </body>
