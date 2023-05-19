@@ -23,6 +23,10 @@
         <input type="radio" name="genero" value="femi">
         Feminino
     </label>
+
+    <input type="checkbox" name="termo" id="termo">
+    
+
     <input type="submit" value="Enviar">
     
 
