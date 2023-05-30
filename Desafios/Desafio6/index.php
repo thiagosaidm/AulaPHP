@@ -30,6 +30,9 @@
           
             echo "<p>Você recebe $salario <br>Isso equivale a ganhar $qtdSalario salários mínimos + $dif reais</p>"
         ?>
+
+
+
     </section>
 </body>
 </html>
