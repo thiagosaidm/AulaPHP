@@ -10,11 +10,14 @@
 <body>
     <?php 
     class conta {
-        public $cpf;
+        // Atributos devem ser privados para respeitar e evitar danos as regras de negócio
+
         public $nometitular;
-        public $saldo = 0;
+        private $saldo = 0;
+        private $cpfTitular;
+        private $tipodeConta;
 
-
+        // Já os métodos podem ser publicos para usabilidade do usuário
         public function sacar(float $valorSaque): void {
             if ($valorSaque > $this->saldo) {
                 echo "saldo indisponível";
@@ -34,20 +37,50 @@
         public function verSaldo (){
             echo "$this->saldo";
         }
+
+        public function definirNome(string $nome): void
+        {
+            $this-> nometitular = $nome;
+          
+        }
+
+        public function definirCpf(string $cpfTitular): void
+        {
+            $this->cpfTitular = $cpfTitular;
+        }
+
+        public function recuperaCpf() : string
+        {
+            return $this->cpfTitular;
+        }
+        
+        public function mostrarSaldo(): string
+        {
+            $saldoFormatado = number_format($this->saldo,2, ',','.');
+            return 'R$' . $saldoFormatado;
+        }
+
+        public function definirTipodeConta(string $tipodeConta): void
+        {
+            $this->tipodeConta = $tipodeConta;
+        }
+
+        public function mostrarTipodeConta(): string
+        {
+            return $this->tipodeConta;
+        }
+      
     }
 
-    $contaCliente = new conta();
-    $contaCliente->cpf = "00000";
-    $contaCliente->nometitular = "Joao";
-    $contaCliente->saldo = 1000;
-        
-    /*
-    var_dump($conta1->saldo);
-    var_dump($conta1->nometitular);
-    var_dump($conta1->cpf);
-    */
+    $contaCliente = new Conta();
 
-    
+    $contaCliente->definirNome("Thiago");
+
+    $contaCliente->definirCpf("15664848");
+
+    $contaCliente->depositar(5000);
+
+    $contaCliente->definirTipodeConta("CC");
 
     ?>
 
@@ -55,7 +88,9 @@
         <section>
         <?php 
           echo "<h1>Bem vindo $contaCliente->nometitular!</h1>";
-          echo "<section>Seu saldo atual é: <h2>$contaCliente->saldo</h2></section>";
+          echo "<p>Cpf: " .$contaCliente->recuperaCpf(). "</p>"; //chamando função no HTML
+          echo "<p>Tipo de Conta: " .$contaCliente->mostrarTipodeConta(). "</p>";
+          echo "<h3>Seu Saldo Atual: " .$contaCliente->mostrarSaldo(). "</h3>"; //chamando função no HTML
 
         ?>
         <button id="sacar">Sacar</button>
