@@ -69,6 +69,15 @@
         {
             return $this->tipodeConta;
         }
+
+        public function transferirValores($valorTransferencia, $recebedor ): void
+         {
+            if ($valorTransferencia<= $this->saldo && $recebedor != "") {
+                echo "Transferencia Realizada com sucesso";
+            }else {
+                echo "Saldo insuficiente";
+            }
+        }
       
     }
 
@@ -93,8 +102,9 @@
           echo "<h3>Seu Saldo Atual: " .$contaCliente->mostrarSaldo(). "</h3>"; //chamando função no HTML
 
         ?>
-        <button id="sacar">Sacar</button>
-        <button id="depositar">Depositar</button>
+        <button id="sacar">Sacar</button> <!-- Ao clicar abre uma opção para escolher o valor --->
+        <button id="depositar">Depositar</button><!-- Ao clicar abre uma opção para escolher o valor --->
+        <button id="transferir">Transferir</button> <!-- Ao clicar abre uma opção para escolher o valor --->
         </section>
        
     </main>
