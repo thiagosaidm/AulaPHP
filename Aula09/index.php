@@ -12,10 +12,19 @@
     class conta {
         // Atributos devem ser privados para respeitar e evitar danos as regras de negócio
 
-        public $nometitular;
-        private $saldo = 0;
-        private $cpfTitular;
+        public readonly string $nometitular; // Readonly, deve ser escrita dentro do escopo da classe, além disso não permite alterar o seu valor
+        private readonly string $cpfTitular;
         private $tipodeConta;
+        private $saldo;
+
+        #metodo construtor do PHP, ele permite setar e dar obrigatoriedade de atributos já na hora da criação de uma instancia de objeto
+
+        public function __construct(string $cpfTitular,string $nometitular)
+        {
+            $this->cpfTitular = $cpfTitular; PHP_EOL;
+            $this->nometitular= $nometitular; PHP_EOL;
+            $this->saldo = 0;
+        }
 
         // Já os métodos podem ser publicos para usabilidade do usuário
         public function sacar(float $valorSaque): void {
@@ -81,11 +90,7 @@
       
     }
 
-    $contaCliente = new Conta();
-
-    $contaCliente->definirNome("Thiago");
-
-    $contaCliente->definirCpf("15664848");
+    $contaCliente = new Conta('123456789', 'Thiago Said');
 
     $contaCliente->depositar(5000);
 
