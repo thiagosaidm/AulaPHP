@@ -20,13 +20,15 @@
         #metodo construtor do PHP, ele permite setar e dar obrigatoriedade de atributos já na hora da criação de uma instancia de objeto
 
         public function __construct(string $cpfTitular,string $nometitular)
-        {
+        {   
+        
             $this->cpfTitular = $cpfTitular; PHP_EOL;
+            $this->validaNome($nometitular);
             $this->nometitular= $nometitular; PHP_EOL;
             $this->saldo = 0;
         }
 
-        // Já os métodos podem ser publicos para usabilidade do usuário
+        // Já os métodos podem ser publicos para usabilidade do usuário, porém para regras de negócio, é interessante mante-los privados
         public function sacar(float $valorSaque): void {
             if ($valorSaque > $this->saldo) {
                 echo "saldo indisponível";
@@ -87,14 +89,23 @@
                 echo "Saldo insuficiente";
             }
         }
+
+        private function validaNome(string $nometitular){
+            if (strlen($nometitular) < 3) {
+                echo "O nome precisa ter mais que 3 caracteres";
+                exit();
+            }
+        }
+
       
     }
 
-    $contaCliente = new Conta('123456789', 'Thiago Said');
+    $contaCliente = new Conta('1291000000', 'Thiago');
 
-    $contaCliente->depositar(5000);
+    $contaCliente->depositar(10000);
 
     $contaCliente->definirTipodeConta("CC");
+
 
     ?>
 
@@ -104,6 +115,7 @@
           echo "<h1>Bem vindo $contaCliente->nometitular!</h1>";
           echo "<p>Cpf: " .$contaCliente->recuperaCpf(). "</p>"; //chamando função no HTML
           echo "<p>Tipo de Conta: " .$contaCliente->mostrarTipodeConta(). "</p>";
+          echo "<p>Voce recebeu um depósito de <h2>R$5000,00</h2></p>";
           echo "<h3>Seu Saldo Atual: " .$contaCliente->mostrarSaldo(). "</h3>"; //chamando função no HTML
 
         ?>
