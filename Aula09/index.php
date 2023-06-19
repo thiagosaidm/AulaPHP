@@ -16,6 +16,8 @@
         private readonly string $cpfTitular;
         private $tipodeConta;
         private $saldo;
+        //Método Estático: é um método ou atributo da Classe, no qual não é necessário atribuir sempre que for criado uma nova instância
+        private static $codigoBanco = 33394;
 
         #metodo construtor do PHP, ele permite setar e dar obrigatoriedade de atributos já na hora da criação de uma instancia de objeto
 
@@ -97,6 +99,10 @@
             }
         }
 
+        public function mostrarCodigoBanco (): int{
+            //self é como se fosse o This da classe, se refere a chamada de um atributo ou método da propria Classe
+            return self ::$codigoBanco;
+        }
       
     }
 
@@ -113,10 +119,12 @@
         <section>
         <?php 
           echo "<h1>Bem vindo $contaCliente->nometitular!</h1>";
+          echo "<p>Código Banco: " .$contaCliente->mostrarCodigoBanco(). "</p>"; //chamando função no HTML
           echo "<p>Cpf: " .$contaCliente->recuperaCpf(). "</p>"; //chamando função no HTML
           echo "<p>Tipo de Conta: " .$contaCliente->mostrarTipodeConta(). "</p>";
           echo "<p>Voce recebeu um depósito de <h2>R$5000,00</h2></p>";
           echo "<h3>Seu Saldo Atual: " .$contaCliente->mostrarSaldo(). "</h3>"; //chamando função no HTML
+          
 
         ?>
         <button id="sacar">Sacar</button> <!-- Ao clicar abre uma opção para escolher o valor --->
