@@ -23,7 +23,7 @@
 
         public function __construct(string $cpfTitular,string $nometitular)
         {   
-        
+            $this->validaCpf($cpfTitular);
             $this->cpfTitular = $cpfTitular; PHP_EOL;
             $this->validaNome($nometitular);
             $this->nometitular= $nometitular; PHP_EOL;
@@ -92,11 +92,41 @@
             }
         }
 
+        //biblioteca PCRE: É uma biblioteca que permite a manipulação de Strings usando expressões regulares.
+        //São usadas para validação, busca, substituição e manipulação
+
+        private function validaCpf($cpfTitular){
+            // verifica se o numero de caracteres é diferente de 11
+            if (strlen($cpfTitular) !== 11) {
+                echo "<section>
+                <h1>CPF INVÁLIDO</h1>
+                <h2>O cpf precisa ter 11 dígitos</h2>
+                </section>";
+                exit();
+            };
+            //verifica se todos os digitos são iguais
+            //A expressão '/(\d)\1{10}/': d captura o digito \1 é o grupo de captura e {10} vê se ele se repete 10x
+            if (preg_match('/(\d)\1{10}/', $cpfTitular)) {
+                echo "<section>
+                <h1>CPF INVÁLIDO</h1>
+                <h2>Por favor, digite um cpf válido para continuar</h2>
+                </section>";
+                exit();
+            };
+
+
+
+        }
+
         private function validaNome(string $nometitular){
             if (strlen($nometitular) < 3) {
-                echo "O nome precisa ter mais que 3 caracteres";
+                echo "<section>
+                <h1>Nome INVÁLIDO</h1>
+                <h2>Por favor, digite um nome válido</h2>
+                </section>";
                 exit();
             }
+
         }
 
         public function mostrarCodigoBanco (): int{
@@ -106,7 +136,7 @@
       
     }
 
-    $contaCliente = new Conta('1291000000', 'Thiago');
+    $contaCliente = new Conta('01656001446', 'Thiago');
 
     $contaCliente->depositar(10000);
 
