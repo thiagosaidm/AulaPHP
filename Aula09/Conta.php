@@ -1,5 +1,6 @@
     <?php 
-
+    //Composição de objetos: forma de relacionar objetos que fazem parte da estrutura de outro objeto, no caso, o titular, é um objeto que
+    //faz parte da conta, e a conta é um objeto que faz parte do banco
     require_once './Titular.php';
 
     class conta {
