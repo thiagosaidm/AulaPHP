@@ -31,11 +31,14 @@
 
             $personagens = ["Ichigo", "Goku","Naruto"];
             print_r($personagens);
+        
+            #mostrando quantidade
+
+            //count
+            $totalpersonagens = count($personagens);
+            echo $totalpersonagens;
 
 
-
-
-    
     
     
     ?>
